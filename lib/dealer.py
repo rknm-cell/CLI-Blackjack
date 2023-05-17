@@ -6,8 +6,6 @@ class Dealer:
         self.value = 0
         self.dealer_deck = Deck()
         
-        
-    
     def dealer_turn(self):
         while self.value > 17:
             return self.draw_card

@@ -1,3 +1,4 @@
+import ipdb
 import click
 from card import Card
 from deck import Deck
@@ -5,27 +6,35 @@ from player import Player
 from dealer import Dealer
 def main():
     print('         ♣♠◆♥ Bye bye ♣♠◆♥       ')
-player_hand = Player()
-dealer_hand = Dealer()
+player = Player()
+player_hand = []
+dealer = Dealer()
+dealer_hand = []
 choice = 0
-
+new_deck = Deck()
 cardindex = 0
 
 
         
 
 while choice !=3:
+    print(new_deck.deck[0])
     print('''                                                                                              
-88888888ba   88                          88            88                          88         
-88      "8b  88                          88            ""                          88         
-88      ,8P  88                          88                                        88         
-88aaaaaa8P'  88  ,adPPYYba,   ,adPPYba,  88   ,d8      88  ,adPPYYba,   ,adPPYba,  88   ,d8   
-88""""""8b,  88  ""     `Y8  a8"     ""  88 ,a8"       88  ""     `Y8  a8"     ""  88 ,a8"    
-88      `8b  88  ,adPPPPP88  8b          8888[         88  ,adPPPPP88  8b          8888[      
-88      a8P  88  88,    ,88  "8a,   ,aa  88`"Yba,      88  88,    ,88  "8a,   ,aa  88`"Yba,   
-88888888P"   88  `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a     88  `"8bbdP"Y8   `"Ybbd8"'  88   `Y8a  
-                                                    ,88                                     
-                                                    888P"                                     
+    ,---,.    ,--,                                   ,-.                                            ,-.  
+  ,'  .'  \ ,--.'|                               ,--/ /|                                        ,--/ /|  
+,---.' .' | |  | :                             ,--. :/ |        .--.                          ,--. :/ |  
+|   |  |: | :  : '                             :  : ' /       .--,`|                          :  : ' /   
+:   :  :  / |  ' |       ,--.--.       ,---.   |  '  /        |  |.     ,--.--.       ,---.   |  '  /    
+:   |    ;  '  | |      /       \     /     \  '  |  :        '--`_    /       \     /     \  '  |  :    
+|   :     \ |  | :     .--.  .-. |   /    / '  |  |   \       ,--,'|  .--.  .-. |   /    / '  |  |   \   
+|   |   . | '  : |__    \__\/: . .  .    ' /   '  : |. \      |  | '   \__\/: . .  .    ' /   '  : |. \  
+'   :  '; | |  | '.'|   ," .--.; |  '   ; :__  |  | ' \ \     :  | |   ," .--.; |  '   ; :__  |  | ' \ \ 
+|   |  | ;  ;  :    ;  /  /  ,.  |  '   | '.'| '  : |--'    __|  : '  /  /  ,.  |  '   | '.'| '  : |--'  
+|   :   /   |  ,   /  ;  :   .'   \ |   :    : ;  |,'     .'__/\_: | ;  :   .'   \ |   :    : ;  |,'     
+|   | ,'     ---`-'   |  ,     .-./  \   \  /  '--'       |   :    : |  ,     .-./  \   \  /  '--'       
+`----'                 `--`---'       `----'               \   \  /   `--`---'       `----'              
+                                                            `--`-'                                       
+
                     
 
     ''')
@@ -34,7 +43,8 @@ while choice !=3:
     # print(Deck._deck)
     # print_card(0)
 
-    
+    print("Welcome to Blackjack Simulator 2023®")
+    print("")    
     print("1) Start a game")
     print("2) Game rules")
     print("3) Quit")
@@ -42,15 +52,29 @@ while choice !=3:
 
     if choice == 1:
         print("Starting game...")
-        Dealer.game_start
-        Player.game_start
+        # Dealer.
+        player.game_start()
+        # player.new_card()
+        print(player.value)
+        print("Your cards:")
+        for card in player.cards:
+            print(f'''
+ ------ 
+|      | 
+|  {card}  | 
+|      | 
+ ------ ''')
+            
         #player turn
         print("hit or stand")
         while choice != "stand":
-            Player.hit = input("hit")
+            if input() == "hit":
+                player.new_card
+                
             input()
         #dealer turn
         Dealer.dealer_turn
+        # while bust_status == False:
         if Player.value > Dealer.value:
             print("You win!")
         elif Player.value < Dealer.value:
@@ -67,3 +91,4 @@ print("* * * Program terminated * * *")
 
 if __name__ == '__main__':
     main()
+# ipdb.set_trace()
