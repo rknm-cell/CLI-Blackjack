@@ -1,24 +1,45 @@
 import ipdb
+import random
 from deck import Deck
-
-values = {"A":11,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"J":10,"Q":10,"K":10}
 class Player:
     def __init__(self):
-
         self.cards = []
-        self.score = 0
-        self.aces = 0
+        self.value = 0
+        self.new_deck = Deck()
+        self._bust = False
+    
+    # def print_card(self, hand):
+        
+    #     return 
+        
+    def new_card(self):
+        self.new_deck.shuffle()
+        # random_card = random.random(len(self.new_deck.deck))
+        new_card = self.new_deck.deck.pop()
+        self.cards.append(new_card)
+        self.value += self.new_deck.values in self.new_deck.values
+        
+    def bust(self):
+        if self.value > 21:
+            self._bust = True
+        else:
+            self._bust = False
+        return self._bust
 
-    def new_card(self, card):
-        self.cards.append(card)
-        self.score += values[card.number]
-        if card.number == "A":
-            self.aces += 1 # add to self.aces
+    def game_start(self):
+        while len(self.cards) < 2:
+            return self.new_card()
+
+    def set_value(self):
+        pass
+
+    def hit(self):
+        return self.new_card
 
     def ace_value(self):
-        while self.score > 21 and self.aces:
-            self.score -= 10
-            self.aces -= 1
-            
-
-ipdb.set_trace()
+        ace_value = 11
+        if self.value > 21:
+            ace_value = 1
+        
+        return ace_value
+# ipdb.set_trace()

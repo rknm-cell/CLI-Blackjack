@@ -6,10 +6,9 @@ class Card:
         self.suit = suit
         self.number = number
     
+    # show cards
     def __str__(self):
         return self.number + self.suit
-        
-        
         
 
 
