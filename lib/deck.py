@@ -41,7 +41,7 @@ class Deck:
 
     # print(deck.deck)
     
-ipdb.set_trace()
+# ipdb.set_trace()
     
 
 

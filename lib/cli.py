@@ -25,6 +25,7 @@ while choice !=3:
         print("Game rules:")
     elif choice == 3:
         print("Quitting program...")
+        
 print("* * * Program terminated * * *")
 
 if __name__ == '__main__':

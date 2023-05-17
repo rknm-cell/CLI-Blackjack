@@ -3,6 +3,3 @@ class Dealer:
         self.cards = []
         self.value = 0
 
-    
-
-    
