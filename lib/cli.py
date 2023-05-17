@@ -1,16 +1,50 @@
+import ipdb
 import click
 from card import Card
+from deck import Deck
+from player import Player
+from dealer import Dealer
 def main():
-    print('         ♣♠Bye bye◆♥       ')
-
+    print('         ♣♠◆♥ Bye bye ♣♠◆♥       ')
+player = Player()
+player_hand = []
+dealer = Dealer()
+dealer_hand = []
 choice = 0
+new_deck = Deck()
+cardindex = 0
+
+
+        
+
 while choice !=3:
-    print("*Blackjack*")
-    print(Card.number)
-    print(" ----    ----")
-    print(f"| {Card.number[0]}{Card.suit[0]} |  | {Card.number[12]}{Card.suit[2]} |")
-    print("|    |  |    |")
-    print(" ----    ----")
+    print(new_deck.deck[0])
+    print('''                                                                                              
+    ,---,.    ,--,                                   ,-.                                            ,-.  
+  ,'  .'  \ ,--.'|                               ,--/ /|                                        ,--/ /|  
+,---.' .' | |  | :                             ,--. :/ |        .--.                          ,--. :/ |  
+|   |  |: | :  : '                             :  : ' /       .--,`|                          :  : ' /   
+:   :  :  / |  ' |       ,--.--.       ,---.   |  '  /        |  |.     ,--.--.       ,---.   |  '  /    
+:   |    ;  '  | |      /       \     /     \  '  |  :        '--`_    /       \     /     \  '  |  :    
+|   :     \ |  | :     .--.  .-. |   /    / '  |  |   \       ,--,'|  .--.  .-. |   /    / '  |  |   \   
+|   |   . | '  : |__    \__\/: . .  .    ' /   '  : |. \      |  | '   \__\/: . .  .    ' /   '  : |. \  
+'   :  '; | |  | '.'|   ," .--.; |  '   ; :__  |  | ' \ \     :  | |   ," .--.; |  '   ; :__  |  | ' \ \ 
+|   |  | ;  ;  :    ;  /  /  ,.  |  '   | '.'| '  : |--'    __|  : '  /  /  ,.  |  '   | '.'| '  : |--'  
+|   :   /   |  ,   /  ;  :   .'   \ |   :    : ;  |,'     .'__/\_: | ;  :   .'   \ |   :    : ;  |,'     
+|   | ,'     ---`-'   |  ,     .-./  \   \  /  '--'       |   :    : |  ,     .-./  \   \  /  '--'       
+`----'                 `--`---'       `----'               \   \  /   `--`---'       `----'              
+                                                            `--`-'                                       
+
+                    
+
+    ''')
+    
+    # print(new_deck.deck)
+    # print(Deck._deck)
+    # print_card(0)
+
+    print("Welcome to Blackjack Simulator 2023®")
+    print("")    
     print("1) Start a game")
     print("2) Game rules")
     print("3) Quit")
@@ -18,6 +52,37 @@ while choice !=3:
 
     if choice == 1:
         print("Starting game...")
+        # Dealer.
+        player.game_start()
+        # player.new_card()
+        print(player.value)
+        print("Your cards:")
+        for card in player.cards:
+            print(f'''
+ ------ 
+|      | 
+|  {card}  | 
+|      | 
+ ------ ''')
+            
+        #player turn
+        print("hit or stand")
+        while choice != "stand":
+            if input() == "hit":
+                player.new_card
+                
+            input()
+        #dealer turn
+        Dealer.dealer_turn
+        # while bust_status == False:
+        if Player.value > Dealer.value:
+            print("You win!")
+        elif Player.value < Dealer.value:
+            print("Dealer wins")
+        else:
+            print("Push")
+        
+        
     elif choice == 2:
         print("Game rules:")
     elif choice == 3:
@@ -26,3 +91,4 @@ print("* * * Program terminated * * *")
 
 if __name__ == '__main__':
     main()
+# ipdb.set_trace()

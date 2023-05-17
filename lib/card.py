@@ -1,17 +1,25 @@
 class Card:
-    def __init__(self):
-        self.suit = []
-        self.number = []
-        self.value = []
-        self.deck = []
+    suits = ("♥","◆","♣","♠")
+    numbers = ("A","2","3","4","5","6","7","8","9","10","J","Q","K")
     
-    suit = ("♥","◆","♣","♠")
+    
+    
+    def __init__(self, suit, number):
+        self.suit = suit
+        self.number = number
+    
+    def __str__(self):
+        return self.number + self.suit
+        
+        
+        
 
-    number = ("A","2","3","4","5","6","7","8","9","10","J","Q","K")
+    
+        
+        
+    
+        
 
-    value = {"A":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"J":10,"Q":10,"K":10}
 
 
-    # card_container = 
-    #     ["---"]
-    #     ["| A♥ |"]
+    
