@@ -16,10 +16,7 @@ cardindex = 0
 
 
         
-
-while choice !=3:
-    
-    print('''                                                                                              
+print('''                                                                                              
     ,---,.    ,--,                                   ,-.                                            ,-.  
   ,'  .'  \ ,--.'|                               ,--/ /|                                        ,--/ /|  
 ,---.' .' | |  | :                             ,--. :/ |        .--.                          ,--. :/ |  
@@ -38,12 +35,16 @@ while choice !=3:
                     
 
     ''')
+print("Welcome to Blackjack Simulator 2023®")
+while choice !=3:
+    
+
     
     # print(new_deck.deck)
     # print(Deck._deck)
     # print_card(0)
 
-    print("Welcome to Blackjack Simulator 2023®")
+    
     print("")    
     print("1) Start a game")
     print("2) Game rules")
@@ -61,36 +62,45 @@ while choice !=3:
             dealer.display_card(card)
         print(f"Dealer's card value is: {dealer.value}")
         print("")
-        print(len(dealer.new_deck.deck))
+        # print(len(dealer.new_deck.deck))
         player.game_start()
         
         # player.new_card()
         # print(player.value)
         print("Your cards:")
-        player.new_card()
+        
         for card in player.cards:
             player.display_card(card)
-        print(len(player.new_deck.deck))
+        # print(len(player.new_deck.deck))
         #player turn
         print(f"Your hand value is {player.value}")
         # print(len(player.new_deck))
         print("")
         print("Do you want to 'hit' or 'stand'?")
-        choice = str(input())
-        while choice != "stand":
-            if choice == "hit":
-                # print(player.cards)
-                player.new_card()
-                
+        choice = str(input()) 
+        while choice == "hit":
+            
+            print(len(player.new_deck.deck))
+            player.new_card()
+            for card in player.cards:
+                player.display_card(card)
+            print(f"Your hand value is {player.value}")
+            
+            if player.bust() == True:
+                choice != "hit"
+            print("Do you want to 'hit' or 'stand'?")
+            choice = str(input()) 
+            
             
         #dealer turn
-        dealer.dealer_turn()
-        print("Dealers cards:")
-        # print(len(dealer.cards))
-        for card in dealer.cards:
-            dealer.display_card(card)
-        print(f"Dealers hand value: {dealer.value}")
-        if player.value == 21:
+        if player.value < 21:
+            dealer.dealer_turn()
+            print("Dealers cards:")
+            # print(len(dealer.cards))
+            for card in dealer.cards:
+                dealer.display_card(card)
+            print(f"Dealers hand value: {dealer.value}")
+        elif player.value == 21:
             print("Blackjack! You won")
         elif dealer.value == 21:
             print("Dealer has Blackjack!")
@@ -107,8 +117,9 @@ while choice !=3:
         elif dealer.bust() == True:
             print("Dealer busted!")
             print("You win!")
-        for card in player.cards and dealer.cards:
+        for card in player.cards:
             del player.cards[0]
+        for card in player.cards:
             del dealer.cards[0]
         
         dealer.value = 0
