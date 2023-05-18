@@ -19,14 +19,21 @@ class Player:
         # print(self.new_deck.deck)
         new_card = self.new_deck.deck.pop()
         self.cards.append(new_card)
-        print(new_card.number, "new card")
-
+        # print(new_card.number, "new card")
+    
+        
         # print(self.new_deck.values[new_card.number], "This is the value")
         self.value += self.new_deck.values[new_card.number]
 
-        print("Current value: ", self.value)
+        # print("Current value: ", self.value)
     
-
+    def display_card(self, card):
+        print(f'''
+ ------ 
+|      | 
+|  {card}  | 
+|      | 
+ ------ ''')
     def game_start(self):
         while len(self.cards) < 2:
             self.new_card()
