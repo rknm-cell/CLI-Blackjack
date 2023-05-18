@@ -15,7 +15,7 @@ class Deck:
             for number in self.numbers:
                 created_card = Card(suit, number)
                 self.deck.append(created_card)
-    
+     
     def shuffle(self):
         random.shuffle(self.deck)
 

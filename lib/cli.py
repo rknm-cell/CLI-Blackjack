@@ -7,18 +7,18 @@ from dealer import Dealer
 def main():
     print('         ♣♠◆♥ Bye bye ♣♠◆♥       ')
 player = Player()
-player_hand = []
+# player_hand = []
 dealer = Dealer()
-dealer_hand = []
+# dealer_hand = []
 choice = 0
-new_deck = Deck()
+play_deck = Deck()
 cardindex = 0
 
 
         
 
 while choice !=3:
-    print(new_deck.deck[0])
+    
     print('''                                                                                              
     ,---,.    ,--,                                   ,-.                                            ,-.  
   ,'  .'  \ ,--.'|                               ,--/ /|                                        ,--/ /|  
@@ -54,35 +54,39 @@ while choice !=3:
     if choice == 1:
         choice = None
         print("Starting game...")
+        
         dealer.game_start()
         print("Dealer's cards:")
         for card in dealer.cards:
             dealer.display_card(card)
         print(f"Dealer's card value is: {dealer.value}")
-        print(len(dealer.new_deck))
+        print("")
+        print(len(dealer.new_deck.deck))
         player.game_start()
         
         # player.new_card()
         # print(player.value)
         print("Your cards:")
+        player.new_card()
         for card in player.cards:
             player.display_card(card)
-        
+        print(len(player.new_deck.deck))
         #player turn
         print(f"Your hand value is {player.value}")
-        print(len(player.new_deck))
+        # print(len(player.new_deck))
+        print("")
         print("Do you want to 'hit' or 'stand'?")
         choice = str(input())
         while choice != "stand":
             if choice == "hit":
-                print(player.cards)
+                # print(player.cards)
                 player.new_card()
                 
             
         #dealer turn
         dealer.dealer_turn()
         print("Dealers cards:")
-        print(len(dealer.cards))
+        # print(len(dealer.cards))
         for card in dealer.cards:
             dealer.display_card(card)
         print(f"Dealers hand value: {dealer.value}")
@@ -103,10 +107,17 @@ while choice !=3:
         elif dealer.bust() == True:
             print("Dealer busted!")
             print("You win!")
+        for card in player.cards and dealer.cards:
+            del player.cards[0]
+            del dealer.cards[0]
         
+        dealer.value = 0
+        player.value = 0
         
     elif choice == 2:
         print("Game rules:")
+        print("Blackjack Game Rules:")
+        print("")
     elif choice == 3:
         print("Quitting program...")
 print("* * * Program terminated * * *")
