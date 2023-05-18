@@ -48,37 +48,61 @@ while choice !=3:
     print("1) Start a game")
     print("2) Game rules")
     print("3) Quit")
+    
     choice = int(input())
 
     if choice == 1:
+        choice = None
         print("Starting game...")
-        # Dealer.
+        dealer.game_start()
+        print("Dealer's cards:")
+        for card in dealer.cards:
+            dealer.display_card(card)
+        print(f"Dealer's card value is: {dealer.value}")
+        # print(len(dealer.new_deck))
         player.game_start()
-        player.new_card()
-        new_deck
-        for card in player.cards:
-            print(f'''
- ------ 
-|      | 
-|  {card}  | 
-|      | 
- ------ ''')
-            print(len(player.new_deck.deck))
-        #player turn
-        print("hit or stand")
-        while choice != "stand":
-            player_hand.hit = input()
-            input()
-        #dealer turn
-        Dealer.dealer_turn
-        # while bust_status == False:
-        if Player.value > Dealer.value:
-            print("You win!")
-        elif Player.value < Dealer.value:
-            print("Dealer wins")
-        else:
-            print("Push")
         
+        # player.new_card()
+        # print(player.value)
+        print("Your cards:")
+        for card in player.cards:
+            player.display_card(card)
+        
+        #player turn
+        print(f"Your hand value is {player.value}")
+        # print(len(player.new_deck))
+        print("Do you want to 'hit' or 'stand'?")
+        choice = str(input())
+        while choice != "stand":
+            if choice == "hit":
+                # print(player.cards)
+                player.new_card()
+                
+            
+        #dealer turn
+        dealer.dealer_turn()
+        print("Dealers cards:")
+        # print(len(dealer.cards))
+        for card in dealer.cards:
+            dealer.display_card(card)
+        print(f"Dealers hand value: {dealer.value}")
+        if player.value == 21:
+            print("Blackjack! You won")
+        elif dealer.value == 21:
+            print("Dealer has Blackjack!")
+        if player.bust() or dealer.bust() == False:
+            if player.value > dealer.value:
+                print("You win!")
+            elif player.value < dealer.value:
+                print("Dealer wins")
+            else:
+                print("Push")
+        elif player.bust() == True:
+            print("You busted!")
+            print("Game over")
+        elif dealer.bust() == True:
+            print("Dealer busted!")
+            print("You win!")
         
     elif choice == 2:
         print("Game rules:")
@@ -88,9 +112,4 @@ print("* * * Program terminated * * *")
 
 if __name__ == '__main__':
     main()
-ipdb.set_trace()
-
-
-
-
-
+# ipdb.set_trace()

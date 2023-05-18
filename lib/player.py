@@ -14,27 +14,38 @@ class Player:
         
     def new_card(self):
         self.new_deck.shuffle()
-        # random_card = random.random(len(self.new_deck.deck))
+        # for card in self.new_deck.deck:
+        #     print(card.number)
+        # print(self.new_deck.deck)
         new_card = self.new_deck.deck.pop()
         self.cards.append(new_card)
-        self.value += self.new_deck.values in self.new_deck.values
+        # print(new_card.number, "new card")
+    
         
+        # print(self.new_deck.values[new_card.number], "This is the value")
+        self.value += self.new_deck.values[new_card.number]
+
+        # print("Current value: ", self.value)
+    
+    def display_card(self, card):
+        print(f'''
+ ------ 
+|      | 
+|  {card}  | 
+|      | 
+ ------ ''')
+    def game_start(self):
+        while len(self.cards) < 2:
+            self.new_card()
+    
     def bust(self):
         if self.value > 21:
             self._bust = True
         else:
             self._bust = False
-        return self._bust
-
-    def game_start(self):
-        while len(self.cards) < 2:
-            return self.new_card()
-
-    def set_value(self):
-        pass
-
-    def hit(self):
-        return self.new_card
+        return self._bust    
+    # def hit(self):
+    #     return self.new_card()
 
     def ace_value(self):
         ace_value = 11
