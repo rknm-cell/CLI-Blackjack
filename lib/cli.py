@@ -7,13 +7,13 @@ from dealer import Dealer
 def main():
     print('         ♣♠◆♥ Bye bye ♣♠◆♥       ')
 player = Player()
-# player_hand = []
+
 dealer = Dealer()
-# dealer_hand = []
+
 choice = 0
 play_deck = Deck()
 cardindex = 0
-blackjack = False
+
 
         
 print('''                                                                                              
