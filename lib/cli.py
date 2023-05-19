@@ -13,7 +13,7 @@ dealer = Dealer()
 choice = 0
 play_deck = Deck()
 cardindex = 0
-
+blackjack = False
 
         
 print('''                                                                                              
@@ -72,11 +72,11 @@ while choice !=3:
         print(f"Your hand value is {player.value}")
         
         print("")
-        
+
         print("Do you want to 'hit' or 'stand'?")
         choice = str(input()) 
         #player's turn
-        if dealer.value < 21 or player.value < 21:
+        if dealer.value != 21 or player.value != 21:
             while choice == "hit":
                 
                 
@@ -93,7 +93,7 @@ while choice !=3:
             
             
         #dealer turn
-        while player.value < 21 and dealer.value < 17:
+        while player.value < 21 and dealer.value < 21:
             dealer.dealer_turn()
             dealer.ace_value()
             print("Dealers cards:")

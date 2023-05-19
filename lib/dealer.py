@@ -1,12 +1,11 @@
 from deck import Deck
-from game import Game
 class Dealer:
     def __init__(self):
         self.cards = []
         self.value = 0
         self.new_deck = Deck()
         self._bust = False
-    
+        self.ace = False
     # def print_card(self, hand):
         
     #     return 
@@ -51,13 +50,19 @@ class Dealer:
     # def hit(self):
     #     return self.new_card()
     def dealer_turn(self):
-        while self.value < 17:
+        ace = False
+        for card in self.cards:
+            if str(card)[0] == 'A':
+                ace = True
+        while self.value < 17 or ace == True:
             self.new_card()
     def ace_value(self):
+        
         for card in self.cards:
-            if str(card)[0] == 'A' and self.value > 21:
+            if str(card)[0] == 'A' and self.value > 21 and self.ace == False:
                 self.value -= 10
-        return self.value
+                self.ace = True
+        
         # ace_value = 11
         # if self.value > 21:
         #     ace_value = 1
