@@ -62,31 +62,30 @@ while choice !=3:
             dealer.display_card(card)
         print(f"Dealer's card value is: {dealer.value}")
         print("")
-        # print(len(dealer.new_deck.deck))
+
         player.game_start()
-        
-        # player.new_card()
-        # print(player.value)
         print("Your cards:")
         
         for card in player.cards:
             player.display_card(card)
-        # print(len(player.new_deck.deck))
-        #player turn
+
         print(f"Your hand value is {player.value}")
-        # print(len(player.new_deck))
+        
         print("")
+        
         print("Do you want to 'hit' or 'stand'?")
         choice = str(input()) 
 
+        #player's turn
         if dealer.value < 21 or player.value < 21:
             while choice == "hit":
-                print(len(player.new_deck.deck))
+
                 player.new_card()
                 for card in player.cards:
                     player.display_card(card)
+                
+                player.ace_value()
                 print(f"Your hand value is {player.value}")
-                # print(player.bust())
                 if player.value >= 21:
                     break
                 print("Do you want to 'hit' or 'stand'?")
@@ -94,14 +93,14 @@ while choice !=3:
             
             
         #dealer turn
-        if player.value < 21:
+        while player.value < 21 and dealer.value < 17:
             dealer.dealer_turn()
+            dealer.ace_value()
             print("Dealers cards:")
-            # print(len(dealer.cards))
             for card in dealer.cards:
                 dealer.display_card(card)
             print(f"Dealers hand value: {dealer.value}")
-        elif player.value == 21:
+        if player.value == 21:
             print("Blackjack!")
         elif dealer.value == 21:
             print("Dealer has Blackjack!")
@@ -118,19 +117,18 @@ while choice !=3:
         elif dealer.bust() == True:
             print("Dealer busted!")
             print("You win!")
-        # for card in player.cards:
-            
+        #clearing lists and values    
         player.cards.clear()
-        # for card in dealer.cards:
-            
         dealer.cards.clear()
-        
-        dealer.value = 0
         player.value = 0
+        dealer.value = 0
+        
+        
         
     elif choice == 2:
         print("Game rules:")
         print("Blackjack Game Rules:")
+
         print('''
             Computer Dealer vs Human Player
         1. This is a game played between a Human Player and a Computer Dealer
@@ -146,6 +144,7 @@ while choice !=3:
         10. If the player's hand and the dealer's hand value both equals, it is a "TIE".
         11. If player's initial two cards adds up to 21 (ACE and a FACE card), it is BLACKJACK, and player wins the round.
         ''')
+
 
     elif choice == 3:
         print("Quitting program...")

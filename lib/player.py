@@ -36,7 +36,7 @@ class Player:
         print('|       |')
         print('|       |') 
         print('|       |')
-        print(f'|   {card} {space}|')
+        print(f'|    {card}{space}|')
         print('└───────┘') 
     def game_start(self):
         while len(self.cards) < 2:
@@ -51,9 +51,10 @@ class Player:
     # def hit(self):
     #     return self.new_card()
     def ace_value(self):
-        ace_value = 11
-        if self.value > 21:
-            ace_value = 1
-        
-        return ace_value
+
+        for card in self.cards:
+            if str(card)[0] == 'A' and self.value > 21:
+                self.value -= 10
+        return self.value
 # ipdb.set_trace()
+
