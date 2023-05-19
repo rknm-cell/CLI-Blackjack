@@ -75,11 +75,11 @@ while choice !=3:
         
         print("Do you want to 'hit' or 'stand'?")
         choice = str(input()) 
+
         #player's turn
         if dealer.value < 21 or player.value < 21:
             while choice == "hit":
-                
-                
+
                 player.new_card()
                 for card in player.cards:
                     player.display_card(card)
@@ -128,17 +128,24 @@ while choice !=3:
     elif choice == 2:
         print("Game rules:")
         print("Blackjack Game Rules:")
-        print('''How do you beat the dealer?
 
-By drawing a hand value that is higher than the dealer’s hand value
-By the dealer drawing a hand value that goes over 21.
-By drawing a hand value of 21 on your first two cards, when the dealer does not.
+        print('''
+            Computer Dealer vs Human Player
+        1. This is a game played between a Human Player and a Computer Dealer
+        1. Goal is to have a value close to 21 than the Dealer without going over 21
+        2. Number cards from (2 - 10) are worth their number value.
+        3. Face cards (Jack, Queen, King) are worth 10 value.
+        4. Aces are worth 11 or 1.
+        5. Player can choose to HIT (draw another card from deck) or STAND (keep the current hand) on their turn.
+        6. If Player's hand goes over 21, you BUST, then the Dealer's win.
+        7. If Player's stand and hand is under 21, then its the Dealer's turn.
+        8. The dealer must hit until their hand value is 17 or higher.
+        9. If the dealer's hand goes over 21, they BUST, then Player wins the round.
+        10. If the player's hand and the dealer's hand value both equals, it is a "TIE".
+        11. If player's initial two cards adds up to 21 (ACE and a FACE card), it is BLACKJACK, and player wins the round.
+        ''')
 
-How do you lose to the dealer? 
 
-Your hand value exceeds 21.
-The dealers hand has a greater value than yours at the end of the round''')
-        print("")
     elif choice == 3:
         print("Quitting program...")
 print("* * * Program terminated * * *")
