@@ -17,4 +17,3 @@ class Game:
     def game_start(self):
         while len(self.cards) < 2:
             self.new_card()
-            

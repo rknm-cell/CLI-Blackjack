@@ -24,16 +24,20 @@ class Player:
         
         # print(self.new_deck.values[new_card.number], "This is the value")
         self.value += self.new_deck.values[new_card.number]
-
         # print("Current value: ", self.value)
-    
+
     def display_card(self, card):
-        print(f'''
- ------ 
-|      | 
-|  {card}  | 
-|      | 
- ------ ''')
+        if len(str(card)) < 3:
+            space = " "
+        else:
+            space = ""
+        print('┌───────┐')
+        print(f'| {card} {space}  |') 
+        print('|       |')
+        print('|       |') 
+        print('|       |')
+        print(f'|   {card} {space}|')
+        print('└───────┘') 
     def game_start(self):
         while len(self.cards) < 2:
             self.new_card()
@@ -46,7 +50,6 @@ class Player:
         return self._bust    
     # def hit(self):
     #     return self.new_card()
-
     def ace_value(self):
         ace_value = 11
         if self.value > 21:
