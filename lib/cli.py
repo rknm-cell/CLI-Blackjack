@@ -76,10 +76,11 @@ while choice !=3:
         print(f"Your hand value is {player.value}")
         # print(len(player.new_deck))
         print("")
-        print("Do you want to 'hit' or 'stand'?")
-        choice = str(input()) 
+        
 
-        if dealer.value < 21 or player.value < 21:
+        if dealer.value < 21 and player.value < 21:
+            print("Do you want to 'hit' or 'stand'?")
+            choice = str(input()) 
             while choice == "hit":
                 print(len(player.new_deck.deck))
                 player.new_card()
@@ -94,18 +95,18 @@ while choice !=3:
             
             
         #dealer turn
-        if player.value < 21:
+        if player.value == 21:
+            print("Blackjack!")
+        elif dealer.value == 21:
+            print("Dealer has Blackjack!")
+        elif player.value < 21:
+        # elif player.value < 21 and dealer.value < 21:
             dealer.dealer_turn()
             print("Dealers cards:")
             # print(len(dealer.cards))
             for card in dealer.cards:
                 dealer.display_card(card)
             print(f"Dealers hand value: {dealer.value}")
-        elif player.value == 21:
-            print("Blackjack!")
-        elif dealer.value == 21:
-            print("Dealer has Blackjack!")
-        if player.value < 21 and dealer.value < 21:
             if player.value > dealer.value:
                 print("You win!")
             elif player.value < dealer.value:
