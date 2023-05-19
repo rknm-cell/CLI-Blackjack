@@ -6,6 +6,7 @@ class Dealer:
         self.value = 0
         self.new_deck = Deck()
         self._bust = False
+        self._stalemate = False
     
     # def print_card(self, hand):
         
@@ -66,7 +67,12 @@ class Dealer:
         # for card in self.new_deck.deck:
         #     print(card.number)
         # print(self.new_deck.deck)
-        new_card = self.new_deck.deck.pop()
+        if len(self.new_deck.deck) >= 1:
+            new_card = self.new_deck.deck.pop()
+        else:
+            # ends the program
+            self._stalemate = True
+            return
         self.cards.append(new_card)
         # print(new_card.number, "new card")
     

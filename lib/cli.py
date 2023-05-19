@@ -12,6 +12,35 @@ dealer = Dealer()
 # dealer_hand = []
 choice = 0
 play_deck = Deck()
+
+"""
+# Good OOP - good context
+player.pull_from(play_deck)
+dealer.pull_from(play_deck)
+
+# Good OOP – bad context
+deck = Deck()
+player.deck = deck
+dealer.deck = deck
+player.pullfrom()
+dealer.pullfrom()
+player.playgame()
+dealer.playgame()
+
+# Bad OOP – bad context
+# in cli.py 
+deck = Deck()
+# in player.py 
+player.deck = Deck()
+player.pullfrom()
+
+# in cli.py 
+deck = Deck()
+# in dealer.py 
+dealer.deck = Deck()
+dealer.pullfrom()
+"""
+
 cardindex = 0
 
 
@@ -56,7 +85,11 @@ while choice !=3:
         choice = None
         print("Starting game...")
         
-        dealer.game_start()
+        if dealer._stalemate is False:
+            dealer.game_start()
+        else:
+            print("Deck is empty. Game over.")
+            break
         print("Dealer's cards:")
         for card in dealer.cards:
             dealer.display_card(card)
@@ -64,22 +97,34 @@ while choice !=3:
         print("")
         # print(len(dealer.new_deck.deck))
         player.game_start()
-        
         # player.new_card()
         # print(player.value)
         print("Your cards:")
         
         for card in player.cards:
             player.display_card(card)
+
+
         # print(len(player.new_deck.deck))
         #player turn
         print(f"Your hand value is {player.value}")
         # print(len(player.new_deck))
-        print("")
-        print("Do you want to 'hit' or 'stand'?")
-        choice = str(input()) 
+        # if player.value == 21 and len(player.cards) == 2:
+        #     # print("yay! you win")
+        #     print("game over. you win!!!")
+        #     break
+        # else:
+        #     print("game goes on...")
 
-        if dealer.value < 21 or player.value < 21:
+        print("")
+        # print("Do you want to 'hit' or 'stand'?")
+        # choice = str(input()) 
+        
+        if player.value == 21 and len(player.cards) == 2:
+            print("YOU WIN")
+        elif dealer.value < 21 or player.value < 21:
+            print("Do you want to 'hit' or 'stand'?")
+            choice = str(input()) 
             while choice == "hit":
                 print(len(player.new_deck.deck))
                 player.new_card()
@@ -91,20 +136,24 @@ while choice !=3:
                     break
                 print("Do you want to 'hit' or 'stand'?")
                 choice = str(input()) 
-            
+
             
         #dealer turn
-        if player.value < 21:
-            dealer.dealer_turn()
+        if player.value == 21:
+            print("Blackjack!")
+        elif dealer.value == 21:
+            print("Dealer has Blackjack!")
+        elif player.value < 21:
+            if dealer._stalemate is False:
+                dealer.dealer_turn()
+            else:
+                print("Deck is empty. Game over.")
+                break
             print("Dealers cards:")
             # print(len(dealer.cards))
             for card in dealer.cards:
                 dealer.display_card(card)
             print(f"Dealers hand value: {dealer.value}")
-        elif player.value == 21:
-            print("Blackjack!")
-        elif dealer.value == 21:
-            print("Dealer has Blackjack!")
         if player.value < 21 and dealer.value < 21:
             if player.value > dealer.value:
                 print("You win!")
