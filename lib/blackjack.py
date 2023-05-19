@@ -1,15 +1,13 @@
 import ipdb
 import click
-from card import Card
+
 from deck import Deck
 from player import Player
-from dealer import Dealer
+
 def main():
     print('         ♣♠◆♥ Bye bye ♣♠◆♥       ')
 player = Player()
-# player_hand = []
-dealer = Dealer()
-# dealer_hand = []
+dealer = Player()
 choice = 0
 play_deck = Deck()
 cardindex = 0
@@ -54,12 +52,14 @@ while choice !=3:
 
     if choice == 1:
         choice = None
+        print("")
         print("Starting game...")
-        
+        print("")
         dealer.game_start()
         print("Dealer's cards:")
         for card in dealer.cards:
             dealer.display_card(card)
+        print("")
         print(f"Dealer's card value is: {dealer.value}")
         print("")
         # print(len(dealer.new_deck.deck))
@@ -97,28 +97,29 @@ while choice !=3:
         #dealer turn
         if player.value == 21:
             print("Blackjack!")
+            print("You win!")
         elif dealer.value == 21:
             print("Dealer has Blackjack!")
+        elif player.value > 21:
+            print("You busted!")
+            print("Game over")
         elif player.value < 21:
         # elif player.value < 21 and dealer.value < 21:
             dealer.dealer_turn()
-            print("Dealers cards:")
             # print(len(dealer.cards))
+            print(f"Dealers hand value: {dealer.value}")
+            print("Dealers cards:")
             for card in dealer.cards:
                 dealer.display_card(card)
-            print(f"Dealers hand value: {dealer.value}")
-            if player.value > dealer.value:
+            if dealer.value > 21:
+                print("Dealer busted!")
+                print("You win!")
+            elif player.value > dealer.value:
                 print("You win!")
             elif player.value < dealer.value:
                 print("Dealer wins")
             else:
                 print("Push")
-        elif player.bust() == True:
-            print("You busted!")
-            print("Game over")
-        elif dealer.bust() == True:
-            print("Dealer busted!")
-            print("You win!")
         # for card in player.cards:
             
         player.cards.clear()
@@ -150,7 +151,7 @@ while choice !=3:
 
     elif choice == 3:
         print("Quitting program...")
-print("* * * Program terminated * * *")
+print("   * * * Program terminated * * *")
 
 if __name__ == '__main__':
     main()

@@ -31,13 +31,13 @@ class Player:
             space = " "
         else:
             space = ""
-        print('┌───────┐')
-        print(f'| {card} {space}  |') 
-        print('|       |')
-        print('|       |') 
-        print('|       |')
-        print(f'|   {card} {space}|')
-        print('└───────┘') 
+        print('     ┌───────┐')
+        print(f'     | {card} {space}  |') 
+        print('     |       |')
+        print('     |       |') 
+        print('     |       |')
+        print(f'     |   {card} {space}|')
+        print('     └───────┘') 
     def game_start(self):
         while len(self.cards) < 2:
             self.new_card()
@@ -56,4 +56,7 @@ class Player:
             ace_value = 1
         
         return ace_value
+    def dealer_turn(self):
+        while self.value < 17:
+            self.new_card()
 # ipdb.set_trace()
