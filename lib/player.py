@@ -24,11 +24,9 @@ class Player:
         
         # print(self.new_deck.values[new_card.number], "This is the value")
         self.value += self.new_deck.values[new_card.number]
-
         # print("Current value: ", self.value)
-    
+
     def display_card(self, card):
-        
         if len(str(card)) < 3:
             space = " "
         else:
@@ -52,10 +50,11 @@ class Player:
         return self._bust    
     # def hit(self):
     #     return self.new_card()
-
     def ace_value(self):
+
         for card in self.cards:
             if str(card)[0] == 'A' and self.value > 21:
                 self.value -= 10
         return self.value
 # ipdb.set_trace()
+
