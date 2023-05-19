@@ -78,18 +78,19 @@ while choice !=3:
         print("")
         print("Do you want to 'hit' or 'stand'?")
         choice = str(input()) 
-        while choice == "hit":
-            
-            print(len(player.new_deck.deck))
-            player.new_card()
-            for card in player.cards:
-                player.display_card(card)
-            print(f"Your hand value is {player.value}")
-            
-            if player.bust() == True:
-                choice != "hit"
-            print("Do you want to 'hit' or 'stand'?")
-            choice = str(input()) 
+        if dealer.value < 21 or player.value < 21:
+            while choice == "hit":
+                
+                print(len(player.new_deck.deck))
+                player.new_card()
+                for card in player.cards:
+                    player.display_card(card)
+                print(f"Your hand value is {player.value}")
+                # print(player.bust())
+                if player.value >= 21:
+                    break
+                print("Do you want to 'hit' or 'stand'?")
+                choice = str(input()) 
             
             
         #dealer turn
@@ -101,10 +102,10 @@ while choice !=3:
                 dealer.display_card(card)
             print(f"Dealers hand value: {dealer.value}")
         elif player.value == 21:
-            print("Blackjack! You won")
+            print("Blackjack!")
         elif dealer.value == 21:
             print("Dealer has Blackjack!")
-        if player.bust() or dealer.bust() == False:
+        if player.value < 21 and dealer.value < 21:
             if player.value > dealer.value:
                 print("You win!")
             elif player.value < dealer.value:
@@ -117,10 +118,12 @@ while choice !=3:
         elif dealer.bust() == True:
             print("Dealer busted!")
             print("You win!")
-        for card in player.cards:
-            del player.cards[0]
-        for card in player.cards:
-            del dealer.cards[0]
+        # for card in player.cards:
+            
+        player.cards.clear()
+        # for card in dealer.cards:
+            
+        dealer.cards.clear()
         
         dealer.value = 0
         player.value = 0

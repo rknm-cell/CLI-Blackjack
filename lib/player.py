@@ -28,12 +28,18 @@ class Player:
         # print("Current value: ", self.value)
     
     def display_card(self, card):
-        print(f'''
- ------ 
-|      | 
-|  {card}  | 
-|      | 
- ------ ''')
+        
+        if len(str(card)) < 3:
+            space = " "
+        else:
+            space = ""
+        print('┌───────┐')
+        print(f'| {card} {space}  |') 
+        print('|       |')
+        print('|       |') 
+        print('|       |')
+        print(f'|   {card} {space}|')
+        print('└───────┘') 
     def game_start(self):
         while len(self.cards) < 2:
             self.new_card()
