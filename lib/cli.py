@@ -78,9 +78,9 @@ while choice !=3:
         print("")
         print("Do you want to 'hit' or 'stand'?")
         choice = str(input()) 
+
         if dealer.value < 21 or player.value < 21:
             while choice == "hit":
-                
                 print(len(player.new_deck.deck))
                 player.new_card()
                 for card in player.cards:
@@ -131,7 +131,22 @@ while choice !=3:
     elif choice == 2:
         print("Game rules:")
         print("Blackjack Game Rules:")
-        print("")
+        print('''
+            Computer Dealer vs Human Player
+        1. This is a game played between a Human Player and a Computer Dealer
+        1. Goal is to have a value close to 21 than the Dealer without going over 21
+        2. Number cards from (2 - 10) are worth their number value.
+        3. Face cards (Jack, Queen, King) are worth 10 value.
+        4. Aces are worth 11 or 1.
+        5. Player can choose to HIT (draw another card from deck) or STAND (keep the current hand) on their turn.
+        6. If Player's hand goes over 21, you BUST, then the Dealer's win.
+        7. If Player's stand and hand is under 21, then its the Dealer's turn.
+        8. The dealer must hit until their hand value is 17 or higher.
+        9. If the dealer's hand goes over 21, they BUST, then Player wins the round.
+        10. If the player's hand and the dealer's hand value both equals, it is a "TIE".
+        11. If player's initial two cards adds up to 21 (ACE and a FACE card), it is BLACKJACK, and player wins the round.
+        ''')
+
     elif choice == 3:
         print("Quitting program...")
 print("* * * Program terminated * * *")
