@@ -37,12 +37,7 @@ print("Welcome to Blackjack Simulator 2023®")
 while choice !=3:
     
 
-    
-    # print(new_deck.deck)
-    # print(Deck._deck)
-    # print_card(0)
 
-    
     print("")    
     print("1) Start a game")
     print("2) Game rules")
@@ -62,19 +57,15 @@ while choice !=3:
         print("")
         print(f"Dealer's card value is: {dealer.value}")
         print("")
-        # print(len(dealer.new_deck.deck))
+       
         player.game_start()
         
-        # player.new_card()
-        # print(player.value)
+      
         print("Your cards:")
         
         for card in player.cards:
             player.display_card(card)
-        # print(len(player.new_deck.deck))
-        #player turn
         print(f"Your hand value is {player.value}")
-        # print(len(player.new_deck))
         print("")
         
 
@@ -87,7 +78,6 @@ while choice !=3:
                 for card in player.cards:
                     player.display_card(card)
                 print(f"Your hand value is {player.value}")
-                # print(player.bust())
                 if player.value >= 21:
                     break
                 print("Do you want to 'hit' or 'stand'?")
@@ -104,9 +94,7 @@ while choice !=3:
             print("You busted!")
             print("Game over")
         elif player.value < 21:
-        # elif player.value < 21 and dealer.value < 21:
             dealer.dealer_turn()
-            # print(len(dealer.cards))
             print("Dealers cards:")
             for card in dealer.cards:
                 dealer.display_card(card)
@@ -120,10 +108,8 @@ while choice !=3:
                 print("Dealer wins")
             else:
                 print("Push")
-        # for card in player.cards:
             
         player.cards.clear()
-        # for card in dealer.cards:
             
         dealer.cards.clear()
         
