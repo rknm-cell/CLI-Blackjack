@@ -107,10 +107,10 @@ while choice !=3:
         # elif player.value < 21 and dealer.value < 21:
             dealer.dealer_turn()
             # print(len(dealer.cards))
-            print(f"Dealers hand value: {dealer.value}")
             print("Dealers cards:")
             for card in dealer.cards:
                 dealer.display_card(card)
+            print(f"Dealers hand value: {dealer.value}")
             if dealer.value > 21:
                 print("Dealer busted!")
                 print("You win!")
@@ -136,13 +136,13 @@ while choice !=3:
         print('''
             Computer Dealer vs Human Player
         1. This is a game played between a Human Player and a Computer Dealer
-        1. Goal is to have a value close to 21 than the Dealer without going over 21
+        1. Goal is to have a value closer to 21 than the Dealer without going over 21
         2. Number cards from (2 - 10) are worth their number value.
         3. Face cards (Jack, Queen, King) are worth 10 value.
-        4. Aces are worth 11 or 1.
+        4. Aces are worth 11 or 1, depending on what is more advantageous.
         5. Player can choose to HIT (draw another card from deck) or STAND (keep the current hand) on their turn.
-        6. If Player's hand goes over 21, you BUST, then the Dealer's win.
-        7. If Player's stand and hand is under 21, then its the Dealer's turn.
+        6. If Player's hand goes over 21, you BUST, then the Dealer wins.
+        7. If the Player stands and hand is under 21, then its the Dealer's turn.
         8. The dealer must hit until their hand value is 17 or higher.
         9. If the dealer's hand goes over 21, they BUST, then Player wins the round.
         10. If the player's hand and the dealer's hand value both equals, it is a "TIE".
