@@ -1,4 +1,4 @@
-import ipdb
+# import ipdb
 import random
 from deck import Deck
 class Player:
@@ -7,10 +7,7 @@ class Player:
         self.value = 0
         self.new_deck = Deck()
         self._bust = False
-    
-    # def print_card(self, hand):
-        
-    #     return 
+
         
     def new_card(self):
         self.new_deck.shuffle()
@@ -36,8 +33,7 @@ class Player:
         else:
             self._bust = False
         return self._bust    
-    # def hit(self):
-    #     return self.new_card()
+    
     def ace_value(self):
         ace_value = 11
         if self.value > 21:

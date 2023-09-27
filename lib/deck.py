@@ -1,4 +1,4 @@
-import ipdb
+# import ipdb
 import random
 from card import Card
 
@@ -23,7 +23,7 @@ class Deck:
         return self.deck.pop()
     
     
-# ipdb.set_trace()
+
     
 
 

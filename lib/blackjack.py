@@ -1,5 +1,5 @@
-import ipdb
-import click
+# import ipdb
+# import click
 
 from deck import Deck
 from player import Player
@@ -141,4 +141,3 @@ print("   * * * Program terminated * * *")
 
 if __name__ == '__main__':
     main()
-# ipdb.set_trace()
